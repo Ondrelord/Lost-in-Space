@@ -4,19 +4,49 @@ using UnityEngine;
 
 public class PlanetGenerator : MonoBehaviour
 {
-    public Planet planetPrefab;
-    public Planet moltenPlanetPrefab;
-    public Planet twinEarthPlanetPrefab;
-    public Planet gasGiantPlanetPrefab;
-    public Planet frozenPlanetPrefab;
-    public Planet tombPlanetPrefab;
+    [Header("System generation settings")]
+    public bool addFoodPlanet;
+    public bool addNuclearFuel;
+    public bool addMetal;
+
+    [Header("Prefabs of the planets")]
+    public Planet defaultPlanet;
+    public Planet moltenPlanet;
+    public Planet twinEarthPlanet;
+    public Planet gasGiantPlanet;
+    public Planet frozenPlanet;
+    public Planet tombPlanet;
 
     private Vector3 randomStartPosition;
+    private int requestedPlanets;
+    private int randomNumberOfPlanets;
 
     // Use this for initialization
     void Start ()
     {
-        int randomNumberOfPlanets = Random.Range(4, 10);
+        requestedPlanets = 0;
+
+        if (addFoodPlanet)
+        {
+            requestedPlanets++;
+        }
+        if (addNuclearFuel)
+        {
+            requestedPlanets++;
+        }
+        if (addMetal)
+        {
+            requestedPlanets++;
+        }
+
+        if (requestedPlanets > 4)
+        {
+            randomNumberOfPlanets = Random.Range(requestedPlanets, 11);
+        }
+        else
+        {
+            randomNumberOfPlanets = Random.Range(4, 11);
+        }
 
         for (int i = 0; i < randomNumberOfPlanets; i++)
         {
@@ -121,13 +151,18 @@ public class PlanetGenerator : MonoBehaviour
         {
             targetPlanet.type = Planet.planetTypes.Molten;
         }
-        else if (rangeFromSun >= 20 && rangeFromSun < 60)
+        else if (rangeFromSun >= 20 && rangeFromSun < 45)
         {
-            targetPlanet.type = Planet.planetTypes.TwinEarth;
+            targetPlanet.type = Planet.planetTypes.Twin_Earth;
+            
         }
-        else if (rangeFromSun >= 60 && rangeFromSun < 80)
+        else if (rangeFromSun >= 45 && rangeFromSun < 65)
         {
-            targetPlanet.type = Planet.planetTypes.GasGiant;
+            targetPlanet.type = Planet.planetTypes.Tomb;
+        }
+        else if (rangeFromSun >= 65 && rangeFromSun < 80)
+        {
+            targetPlanet.type = Planet.planetTypes.Gas_Giant;
         }
         else if (rangeFromSun >= 80)
         {
@@ -135,16 +170,101 @@ public class PlanetGenerator : MonoBehaviour
         }
     }
 
-    public void SetResourcesOfPlanet(Planet targetPlanet)
+    public void SetResourcesOfPlanet(Planet targetPlanet, Planet.planetTypes planetType)
     {
-        int randomFrequentResourceIndex = Random.Range(1, 7);
-        SetFrequentResourceType(randomFrequentResourceIndex, targetPlanet);
+        int randomFrequentResourceIndex;
+        int randomNormalResourceIndex;
+        int randomRareResourceIndex;
 
-        int randomNormalResourceIndex = Random.Range(1, 7);
-        SetNormalResourceType(randomNormalResourceIndex, targetPlanet);
+        switch (planetType)
+        {
+            case Planet.planetTypes.Molten:
 
-        int randomRareResourceIndex = Random.Range(1, 7);
-        SetRareResourceType(randomRareResourceIndex, targetPlanet);
+                if (addMetal)
+                {
+                    randomFrequentResourceIndex = 2;
+                    SetFrequentResourceType(randomFrequentResourceIndex, targetPlanet);
+                    addMetal = false;
+                }
+                else
+                {
+                    randomFrequentResourceIndex = Random.Range(2, 4);
+                    SetFrequentResourceType(randomFrequentResourceIndex, targetPlanet);
+                }
+
+                randomNormalResourceIndex = Random.Range(2, 5);
+                SetNormalResourceType(randomNormalResourceIndex, targetPlanet);
+
+                randomRareResourceIndex = Random.Range(4, 6);
+                SetRareResourceType(randomRareResourceIndex, targetPlanet);
+
+                break;
+
+            case Planet.planetTypes.Twin_Earth:
+
+                randomFrequentResourceIndex = Random.Range(7, 8);
+                SetFrequentResourceType(randomFrequentResourceIndex, targetPlanet);
+
+                randomNormalResourceIndex = Random.Range(2, 6);
+                SetNormalResourceType(randomNormalResourceIndex, targetPlanet);
+
+                randomRareResourceIndex = Random.Range(4, 6);
+                SetRareResourceType(randomRareResourceIndex, targetPlanet);
+
+                break;
+
+            case Planet.planetTypes.Gas_Giant:
+
+                randomFrequentResourceIndex = Random.Range(1, 2);
+                SetFrequentResourceType(randomFrequentResourceIndex, targetPlanet);
+
+                randomNormalResourceIndex = Random.Range(1, 2);
+                SetNormalResourceType(randomNormalResourceIndex, targetPlanet);
+
+                randomRareResourceIndex = Random.Range(1, 2);
+                SetRareResourceType(randomRareResourceIndex, targetPlanet);
+
+                break;
+
+            case Planet.planetTypes.Frozen:
+
+                randomFrequentResourceIndex = Random.Range(7, 8);
+                SetFrequentResourceType(randomFrequentResourceIndex, targetPlanet);
+
+                randomNormalResourceIndex = Random.Range(1, 3);
+                SetNormalResourceType(randomNormalResourceIndex, targetPlanet);
+
+                randomRareResourceIndex = Random.Range(3, 6);
+                SetRareResourceType(randomRareResourceIndex, targetPlanet);
+
+                break;
+
+            case Planet.planetTypes.Tomb:
+
+                randomFrequentResourceIndex = Random.Range(5, 6);
+                SetFrequentResourceType(randomFrequentResourceIndex, targetPlanet);
+
+                randomNormalResourceIndex = Random.Range(1, 7);
+                SetNormalResourceType(randomNormalResourceIndex, targetPlanet);
+
+                randomRareResourceIndex = Random.Range(6, 7);
+                SetRareResourceType(randomRareResourceIndex, targetPlanet);
+
+                break;
+
+            default:
+
+                randomFrequentResourceIndex = Random.Range(1, 7);
+                SetFrequentResourceType(randomFrequentResourceIndex, targetPlanet);
+
+                randomNormalResourceIndex = Random.Range(1, 7);
+                SetNormalResourceType(randomNormalResourceIndex, targetPlanet);
+
+                randomRareResourceIndex = Random.Range(1, 7);
+                SetRareResourceType(randomRareResourceIndex, targetPlanet);
+
+                break;
+        }
     }
 
     public void PlacePlanet(Planet planetPrefab)
@@ -152,36 +272,53 @@ public class PlanetGenerator : MonoBehaviour
         switch (planetPrefab.type)
         {
             case Planet.planetTypes.Molten:
-                SetResourcesOfPlanet(moltenPlanetPrefab);
-                moltenPlanetPrefab.type = Planet.planetTypes.Molten;
-                Instantiate(moltenPlanetPrefab, randomStartPosition, Quaternion.identity);
+                SetResourcesOfPlanet(moltenPlanet, Planet.planetTypes.Molten);
+                moltenPlanet.type = Planet.planetTypes.Molten;
+                Instantiate(moltenPlanet, randomStartPosition, Quaternion.identity);
                 break;
-            case Planet.planetTypes.TwinEarth:
-                SetResourcesOfPlanet(twinEarthPlanetPrefab);
-                twinEarthPlanetPrefab.type = Planet.planetTypes.TwinEarth;
-                Instantiate(twinEarthPlanetPrefab, randomStartPosition, Quaternion.identity);
+            case Planet.planetTypes.Twin_Earth:
+                SetResourcesOfPlanet(twinEarthPlanet, Planet.planetTypes.Twin_Earth);
+                twinEarthPlanet.type = Planet.planetTypes.Twin_Earth;
+                Instantiate(twinEarthPlanet, randomStartPosition, Quaternion.identity);
                 break;
-            case Planet.planetTypes.GasGiant:
-                SetResourcesOfPlanet(gasGiantPlanetPrefab);
-                gasGiantPlanetPrefab.type = Planet.planetTypes.GasGiant;
-                Instantiate(gasGiantPlanetPrefab, randomStartPosition, Quaternion.identity);
+            case Planet.planetTypes.Gas_Giant:
+                SetResourcesOfPlanet(gasGiantPlanet, Planet.planetTypes.Gas_Giant);
+                gasGiantPlanet.type = Planet.planetTypes.Gas_Giant;
+                Instantiate(gasGiantPlanet, randomStartPosition, Quaternion.identity);
                 break;
             case Planet.planetTypes.Frozen:
-                SetResourcesOfPlanet(frozenPlanetPrefab);
-                frozenPlanetPrefab.type = Planet.planetTypes.Frozen;
-                Instantiate(frozenPlanetPrefab, randomStartPosition, Quaternion.identity);
+                SetResourcesOfPlanet(frozenPlanet, Planet.planetTypes.Frozen);
+                frozenPlanet.type = Planet.planetTypes.Frozen;
+                Instantiate(frozenPlanet, randomStartPosition, Quaternion.identity);
                 break;
             case Planet.planetTypes.Tomb:
-                SetResourcesOfPlanet(tombPlanetPrefab);
-                tombPlanetPrefab.type = Planet.planetTypes.Tomb;
-                Instantiate(tombPlanetPrefab, randomStartPosition, Quaternion.identity);
+                SetResourcesOfPlanet(tombPlanet, Planet.planetTypes.Tomb);
+                tombPlanet.type = Planet.planetTypes.Tomb;
+                Instantiate(tombPlanet, randomStartPosition, Quaternion.identity);
                 break;
         }
     }
 
     public void CreatePlanet (Planet planet)
     {
-        randomStartPosition = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f), 0);
+        if (addFoodPlanet)
+        {
+            randomStartPosition = new Vector3(Random.Range(20.0f, 30.0f), Random.Range(20.0f, 30.0f), 0);
+            addFoodPlanet = false;
+        }
+        else if (addMetal)
+        {
+            randomStartPosition = new Vector3(Random.Range(5.0f, 10.0f), Random.Range(5.0f, 15.0f), 0);
+        }
+        else if (addNuclearFuel)
+        {
+            randomStartPosition = new Vector3(Random.Range(45.0f, 50.0f), Random.Range(45.0f, 50.0f), 0);
+            addNuclearFuel = false;
+        }
+        else
+        {
+            randomStartPosition = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f), 0);
+        }
 
         float rangeFromSun = Vector2.Distance(randomStartPosition, new Vector3(0, 0, 0));
         SetPlanetType(rangeFromSun, planet);

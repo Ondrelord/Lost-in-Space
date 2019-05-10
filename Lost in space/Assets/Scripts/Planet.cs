@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Planet : MonoBehaviour
 {
-     public enum planetTypes  // List of Planet Types
+    public enum planetTypes  // List of Planet Types
     {
         Twin_Earth,
         Gas_Giant,
@@ -27,6 +27,7 @@ public class Planet : MonoBehaviour
         
     }
 
+    [Header("Planet type and resources")]
     public planetTypes type;                 // Planet type
 
     public resourceTypes frequentResource;   // Choosing a frequent resource that is often found on this planet
@@ -41,6 +42,7 @@ public class Planet : MonoBehaviour
     string rareResourceName;            // Index of resource rarely found on this planet
     int rareResourceCount;            // The number of units of a rare resource on this planet
 
+    [Header("Interface elements of the planet")]
     public GameObject scanInterface; // Slot for attaching a panel with information about the planet
     public GameObject planetInfoInterface; // Slot for attaching a panel with information about the planet
     public Text iconText;
@@ -60,6 +62,7 @@ public class Planet : MonoBehaviour
     GameObject btnNormalResGetting;   // Slot for the button that calls the NormalResourceGetting function
     GameObject btnRareResGetting;     // Slot for the button that calls the RareResourceGetting function
 
+    [Header("Properties of the planet")]
     public float updateTime;                   // The time, in seconds, after which resources will be updated
 
     public bool scaned;                      // Determining whether the planet is scanned
