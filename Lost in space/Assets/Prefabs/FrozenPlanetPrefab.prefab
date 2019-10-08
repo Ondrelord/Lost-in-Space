@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114708724403894482}
   m_Layer: 0
   m_Name: FrozenPlanetPrefab
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6790d5fce53926b429ae80e4dc79eda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 4
-  frequentResource: 2
-  normalResource: 4
-  rareResource: 2
+  type: 3
+  frequentResource: 7
+  normalResource: 1
+  rareResource: 5
   scanInterface: {fileID: 0}
   planetInfoInterface: {fileID: 0}
   iconText: {fileID: 0}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cosmicBody: {fileID: 1171285419437802}
-  speed: 0.1
+  speed: 0.05
   randomStart: 1
   startPosition: 0
 --- !u!135 &135547529810473398

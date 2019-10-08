@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114466482653874096}
   m_Layer: 0
   m_Name: GasGiantPlanetPrefab
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cosmicBody: {fileID: 1886760655901020}
-  speed: 0.2
+  speed: 0.15
   randomStart: 1
   startPosition: 0
 --- !u!114 &114678175995706750
@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6790d5fce53926b429ae80e4dc79eda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 1
   frequentResource: 1
-  normalResource: 5
-  rareResource: 4
+  normalResource: 1
+  rareResource: 1
   scanInterface: {fileID: 0}
   planetInfoInterface: {fileID: 0}
   iconText: {fileID: 0}

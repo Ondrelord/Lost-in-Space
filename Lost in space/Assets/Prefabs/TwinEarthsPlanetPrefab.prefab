@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114835211161016948}
   m_Layer: 0
   m_Name: TwinEarthsPlanetPrefab
-  m_TagString: Untagged
+  m_TagString: Living Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6790d5fce53926b429ae80e4dc79eda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  frequentResource: 5
-  normalResource: 2
-  rareResource: 1
+  type: 0
+  frequentResource: 7
+  normalResource: 5
+  rareResource: 4
   scanInterface: {fileID: 0}
   planetInfoInterface: {fileID: 0}
   iconText: {fileID: 0}

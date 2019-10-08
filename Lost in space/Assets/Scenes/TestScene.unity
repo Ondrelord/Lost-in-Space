@@ -140,17 +140,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0007b677f7955774bad4910eddf93d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetPrefab: {fileID: 114644406136110992, guid: 9dd73a125e6f52e4d8dd4b8fb01ed3c3,
+  minNumberOfSuns: 0
+  maxNumberOfSuns: 0
+  minNumberOfPlanets: 10
+  maxNumberOfPlanets: 20
+  addMoltenPlanets: 4
+  addEarthLikePlanets: 2
+  addTombPlanets: 0
+  addGasGiantPlanets: 5
+  addFrozenPlanets: 3
+  minNumberOfAsteroids: 0
+  maxNumberOfAsteroids: 0
+  addHelium: 0
+  addIron: 0
+  addSilicium: 0
+  addGold: 0
+  addUranium: 0
+  addNuclearuel: 0
+  addWater: 0
+  defaultPlanet: {fileID: 114644406136110992, guid: 9dd73a125e6f52e4d8dd4b8fb01ed3c3,
     type: 2}
-  moltenPlanetPrefab: {fileID: 114756049317962424, guid: 3502e994e0733634fb26b547860919a2,
+  moltenPlanet: {fileID: 114756049317962424, guid: 3502e994e0733634fb26b547860919a2,
     type: 2}
-  twinEarthPlanetPrefab: {fileID: 114805802107659326, guid: 6efb93d62be7fd54d94dacdd7316b9e0,
+  twinEarthPlanet: {fileID: 114805802107659326, guid: 6efb93d62be7fd54d94dacdd7316b9e0,
     type: 2}
-  gasGiantPlanetPrefab: {fileID: 114678175995706750, guid: 96f05dc964af34d4284b29a6246c328d,
+  gasGiantPlanet: {fileID: 114678175995706750, guid: 96f05dc964af34d4284b29a6246c328d,
     type: 2}
-  frozenPlanetPrefab: {fileID: 114275724151651492, guid: 0ca2f773de97b5548b4f76056f3185ee,
+  frozenPlanet: {fileID: 114275724151651492, guid: 0ca2f773de97b5548b4f76056f3185ee,
     type: 2}
-  tombPlanetPrefab: {fileID: 114817348744303466, guid: 31eaf1acfd3a2004aa005ec95f6a028f,
+  tombPlanet: {fileID: 114817348744303466, guid: 31eaf1acfd3a2004aa005ec95f6a028f,
     type: 2}
 --- !u!4 &13206269
 Transform:

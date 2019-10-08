@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114661984317493148}
   m_Layer: 0
   m_Name: TombPlanetPrefab
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cosmicBody: {fileID: 1252048160549744}
-  speed: 0
-  randomStart: 0
+  speed: 0.25
+  randomStart: 1
   startPosition: 0
 --- !u!114 &114817348744303466
 MonoBehaviour:
@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6790d5fce53926b429ae80e4dc79eda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 5
-  frequentResource: 0
-  normalResource: 0
-  rareResource: 0
+  type: 4
+  frequentResource: 5
+  normalResource: 1
+  rareResource: 6
   scanInterface: {fileID: 0}
   planetInfoInterface: {fileID: 0}
   iconText: {fileID: 0}

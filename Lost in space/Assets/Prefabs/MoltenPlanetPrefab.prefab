@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114271354897662596}
   m_Layer: 0
   m_Name: MoltenPlanetPrefab
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cosmicBody: {fileID: 1529261651476932}
-  speed: 0.5
+  speed: 1
   randomStart: 1
   startPosition: 0
 --- !u!114 &114756049317962424
@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6790d5fce53926b429ae80e4dc79eda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
-  frequentResource: 0
-  normalResource: 0
-  rareResource: 0
+  type: 2
+  frequentResource: 3
+  normalResource: 4
+  rareResource: 4
   scanInterface: {fileID: 0}
   planetInfoInterface: {fileID: 0}
   iconText: {fileID: 0}
